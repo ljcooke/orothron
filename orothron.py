@@ -23,7 +23,7 @@ class NameGenerator:
     def generate(self):
         name, id, char = [], '', '^'
         while char:
-            char = random.choice(self.markov.get(id, ''))
+            char = random.choice(self.markov.get(id, ['']))
             name.append(char)
             id = (id + char)[-self.prefixlen:]
         words = ''.join(name).split()
@@ -31,7 +31,7 @@ class NameGenerator:
 
 def main():
     names = NameGenerator(sys.stdin.read().split('\n'))
-    for i in range(10):
+    for _ in range(10):
         print(names.generate())
 
 if __name__ == '__main__':
