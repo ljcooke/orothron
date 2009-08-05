@@ -13,8 +13,8 @@ class NameGenerator:
         assert prefixlen > 0
         self.prefixlen = prefixlen
         self.markov = {}
-        for name in filter(lambda n: len(n) > prefixlen, names):
-            name = name.strip().lower()
+        for name in filter(lambda n: len(n) > prefixlen,
+                           (n.strip().lower() for n in names)):
             id = ''
             for char in list(name) + ['']:
                 self.markov.setdefault(id, []).append(char)
