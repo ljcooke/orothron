@@ -19,6 +19,7 @@ class NameGenerator:
             for char in list(name) + ['']:
                 self.markov.setdefault(id, []).append(char)
                 id = (id + char)[-prefixlen:]
+        assert self.markov, "source text is too short"
 
     def generate(self):
         name, id, char = [], '', '^'
@@ -30,9 +31,12 @@ class NameGenerator:
         return ' '.join(word.capitalize() for word in words)
 
 def main():
-    names = NameGenerator(sys.stdin.read().split('\n'))
-    for _ in range(10):
-        print(names.generate())
+    try:
+        names = NameGenerator(sys.stdin.read().split('\n'))
+        for _ in range(10):
+            print(names.generate())
+    except AssertionError, e:
+        print('Error: ' + e.message)
 
 if __name__ == '__main__':
     main()
