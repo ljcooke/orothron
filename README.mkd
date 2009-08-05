@@ -1,0 +1,35 @@
+Orothron
+========
+
+A word/name generator.
+
+
+## Usage ##
+
+Feed it a list of strings:
+
+    $ ./orothron.py < source.txt
+
+and ten vaguely related strings will be printed.
+
+
+## Example ##
+
+    $ head -n5 bands.txt
+    Abaddon Incarnate
+    Æthenor
+    Akercocke
+    Anaal Nathrakh
+    Anata
+
+    $ ./orothron.py < bands.txt
+    Mesperus
+    Ann Inslate
+    Immorgorgortal
+    Elyst
+    Æthsperamespelphan
+    Klammeguranate
+    Aurancapitatedonegah
+    Immonerzborth
+    Belphe Hagiscordardial
+    Prizartate
